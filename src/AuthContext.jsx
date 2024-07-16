@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     
       // Your login logic here
-      axios.get('http://localhost:5050/get', { params: { email: userId } })
+      axios.get('https://blogcast-backend.onrender.com/get', { params: { email: userId } })
         .then((response) => {
           const email = response.data.email;
           const password = response.data.password;

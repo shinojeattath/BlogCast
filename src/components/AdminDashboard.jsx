@@ -192,7 +192,7 @@ const DashboardContent = () => {
   const [noOfPosts, setNoOfPosts] = useState(0);
   
   useEffect(() => {
-    axios.get('http://127.0.0.1:5050/getUser')
+    axios.get('https://blogcast-backend.onrender.com/getUser')
       .then((response) => {
         console.log("dashboard data", response.data);
         setNoOfUsers(response.data.length);
@@ -258,7 +258,7 @@ const UsersContent = () => {
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:5050/getUser')
+    axios.get('https://blogcast-backend.onrender.com/getUser')
       .then((response) => {
         console.log(response.data);
         setUserData(response.data);
@@ -333,7 +333,7 @@ const BlogsContent = () => {
   const [adminBlogs, setAdminBlogs] = useState([]);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:5050/getBlog')
+    axios.get('https://blogcast-backend.onrender.com/getBlog')
       .then((response) => {
         console.log("dashboard data", response.data);
         setAdminBlogs(response.data);
@@ -344,7 +344,7 @@ const BlogsContent = () => {
   }, []);
 
   const handleDelete = (blogId) => {
-    axios.delete(`http://127.0.0.1:5050/deleteBlog/${blogId}`)
+    axios.delete(`https://blogcast-backend.onrender.com/${blogId}`)
       .then((response) => {
         console.log("blog deleted");
         // Remove the deleted blog from the state

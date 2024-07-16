@@ -194,7 +194,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:5050/getBlog');
+        const response = await axios.get('https://blogcast-backend.onrender.com/getBlog');
         setPosts(response.data);
       } catch (error) {
         console.error('Error fetching posts:', error);
@@ -232,7 +232,7 @@ const HomePage = () => {
                 transition={{ duration: 0.5 }}
               >
                 <Link to={`/blog/${post._id}`} state={{ post: post }} style={{ textDecoration: 'none', color: 'inherit' }}>
-                  <PostImage src='https://source.unsplash.com/random/400x200' alt={post.title} />
+                  <PostImage src='cat.jpg' alt={post.title} />
                   <PostContent>
                     <PostTitle>{post.title}</PostTitle>
                     <PostDate>{post.created_at}</PostDate>

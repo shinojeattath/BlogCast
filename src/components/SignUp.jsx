@@ -98,7 +98,7 @@ const SignUp = () => {
 
   const addData = (e) => {
     e.preventDefault();
-    axios.post('http://127.0.0.1:5050/post', input)
+    axios.post('https://blogcast-backend.onrender.com/post', input)
       .then((response) => {
         console.log(response.data);
         console.log("data added");

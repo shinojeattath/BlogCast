@@ -237,7 +237,7 @@ const HomePage = () => {
           <Section>
             <LogoContainer>
               <Logo><img src="blogcast.png" alt="logo" /></Logo>
-              <Subtitle>Your Voice, Your Story</Subtitle>
+              <Subtitle>Your Voice, Your Story...!</Subtitle>
             </LogoContainer>
             <ButtonContainer>
               <HomeButton onClick={() =>{if (!authenticated){navigate('signup')} else {scrollToRecentPosts()}}}>Get Started</HomeButton>

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import styled, { createGlobalStyle } from 'styled-components';
 import { useAuth } from '../AuthContext';
+import { DotSpinner } from '@uiball/loaders';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -13,6 +14,19 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     color: #333;
   }
+`;
+
+const LoadingOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 `;
 
 const HomeContainer = styled.div`
@@ -186,6 +200,7 @@ const HomePage = () => {
   const [posts, setPosts] = useState([]);
   const { authenticated } = useAuth();
   const recentPostsRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const scrollToRecentPosts = () => {
     recentPostsRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -194,15 +209,25 @@ const HomePage = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get('https://blogcast-backend.onrender.com/getBlog');
+        const response = await axios.get('http://127.0.0.1:5050/getBlog');
         setPosts(response.data);
       } catch (error) {
         console.error('Error fetching posts:', error);
+      }finally {
+        setIsLoading(false);
       }
     };
     fetchPosts();
   }, []);
   const navigate = useNavigate()
+
+  if (isLoading) {
+    return (
+      <LoadingOverlay>
+        <DotSpinner size={40} speed={0.9} color="black" />
+      </LoadingOverlay>
+    );
+  }
 
   return (
     <>
@@ -215,7 +240,7 @@ const HomePage = () => {
               <Subtitle>Your Voice, Your Story</Subtitle>
             </LogoContainer>
             <ButtonContainer>
-              <HomeButton onClick={() =>{if (!authenticated){navigate('login')} else {scrollToRecentPosts()}}}>Get Started</HomeButton>
+              <HomeButton onClick={() =>{if (!authenticated){navigate('signup')} else {scrollToRecentPosts()}}}>Get Started</HomeButton>
               <HomeButton onClick={scrollToRecentPosts}>Explore</HomeButton>
             </ButtonContainer>
           </Section>

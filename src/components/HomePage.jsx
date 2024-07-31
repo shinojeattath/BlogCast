@@ -209,7 +209,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:5050/getBlog');
+        const response = await axios.get('https://blogcast-backend.onrender.com/getBlog');
         setPosts(response.data);
       } catch (error) {
         console.error('Error fetching posts:', error);

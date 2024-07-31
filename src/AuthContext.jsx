@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.get('http://localhost:5050/get', { params: { email } });
+      const response = await axios.get('https://blogcast-backend.onrender.com/get', { params: { email } });
       const userData = response.data;
 
       if (userData.email === email && userData.password === password) {

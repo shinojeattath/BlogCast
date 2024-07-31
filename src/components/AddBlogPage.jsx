@@ -121,7 +121,7 @@ const AddBlogPage = () => {
 
   const fetchUserDetails = async () => {
     try {
-      const response = await axios.get('http://localhost:5050/get', { params: { email: userId } });
+      const response = await axios.get('https://blogcast-backend.onrender.com/get', { params: { email: userId } });
       const { firstName, lastName, email } = response.data;
       const now = new Date();
       const date = format(now, 'yyyy-MM-dd');
@@ -139,7 +139,7 @@ const AddBlogPage = () => {
 
   const handlePublish = async (e) => {
     e.preventDefault();
-    const url = isEditing ? `http://127.0.0.1:5050/updateBlog/${newBlog._id}` : 'http://127.0.0.1:5050/postBlog';
+    const url = isEditing ? `https://blogcast-backend.onrender.com/updateBlog/${newBlog._id}` : 'https://blogcast-backend.onrender.com/postBlog';
     const method = isEditing ? axios.put : axios.post;
 
     try {

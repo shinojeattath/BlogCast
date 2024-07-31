@@ -235,7 +235,7 @@ const BlogPostPage = () => {
 
   const handleDeleteConfirm = async () => {
     try {
-      await axios.delete(`http://127.0.0.1:5050/deleteBlog/${postData._id}`);
+      await axios.delete(`https://blogcast-backend.onrender.com/deleteBlog/${postData._id}`);
       setIsDeleteModalOpen(false);
       navigate('/profile');
     } catch (error) {

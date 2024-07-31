@@ -16,7 +16,7 @@ const EditProfileForm = ({ profileData, onUpdate, onCancel }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`http://localhost:5050/updateProfile`, formData);
+      const response = await axios.put(`https://blogcast-backend.onrender.com/updateProfile`, formData);
       if (response.data) {
         onUpdate(response.data);
       }

@@ -110,7 +110,7 @@ const ProfilePage = () => {
     const fetchData = async () => {
       if (userId) {
         try {
-          const response = await axios.get(`http://localhost:5050/get`, { params: { email: userId } });
+          const response = await axios.get(`https://blogcast-backend.onrender.com/get`, { params: { email: userId } });
           setProfileData(response.data);
         } catch (error) {
           console.log("Error fetching profile data:", error);
@@ -124,7 +124,7 @@ const ProfilePage = () => {
     const fetchUserBlogs = async () => {
       if (userId) {
         try {
-          const response = await axios.get('http://localhost:5050/getUserBlog', { params: { email: userId } });
+          const response = await axios.get('https://blogcast-backend.onrender.com/getUserBlog', { params: { email: userId } });
           setUserBlogs(Array.isArray(response.data) ? response.data : []);
         } catch (error) {
           console.log("Error fetching blogs:", error);

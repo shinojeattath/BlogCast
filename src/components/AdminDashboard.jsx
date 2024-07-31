@@ -218,7 +218,7 @@ const DashboardContent = () => {
   const [noOfPosts, setNoOfPosts] = useState(0);
   
   useEffect(() => {
-    axios.get('http://127.0.0.1:5050/getUser')
+    axios.get('https://blogcast-backend.onrender.com/getUser')
       .then((response) => {
         setNoOfUsers(response.data.length);
       })
@@ -226,7 +226,7 @@ const DashboardContent = () => {
         console.log("error" + error);
       });
 
-    axios.get('http://127.0.0.1:5050/getBlog')
+    axios.get('https://blogcast-backend.onrender.com/getBlog')
       .then((response) => {
         setNoOfPosts(response.data.length);
       })
@@ -260,7 +260,7 @@ const UsersContent = () => {
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:5050/getUser')
+    axios.get('https://blogcast-backend.onrender.com/getUser')
       .then((response) => {
         setUserData(response.data);
       })
@@ -270,7 +270,7 @@ const UsersContent = () => {
   }, []);
 
   const handleDelete = (userId) => {
-    axios.delete(`http://127.0.0.1:5050/deleteUser/${userId}`)
+    axios.delete(`https://blogcast-backend.onrender.com/deleteUser/${userId}`)
       .then((response) => {
         console.log("user deleted");
         window.location.reload();
@@ -319,7 +319,7 @@ const BlogsContent = () => {
   const [adminBlogs, setAdminBlogs] = useState([]);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:5050/getBlog')
+    axios.get('https://blogcast-backend.onrender.com/getBlog')
       .then((response) => {
         setAdminBlogs(response.data);
       })
@@ -329,7 +329,7 @@ const BlogsContent = () => {
   }, []);
 
   const handleDelete = (blogId) => {
-    axios.delete(`http://127.0.0.1:5050/deleteBlog/${blogId}`)
+    axios.delete(`https://blogcast-backend.onrender.com/deleteBlog/${blogId}`)
       .then((response) => {
         console.log("blog deleted");
         window.location.reload();

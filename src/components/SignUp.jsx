@@ -197,7 +197,7 @@ const SignUp = () => {
       }
   
       try {
-        const response = await axios.post('http://localhost:5050/post', formData, {
+        const response = await axios.post('https://blogcast-backend.onrender.com/post', formData, {
           headers: { 'Content-Type': 'multipart/form-data' }
         });
         console.log('Response:', response.data);
